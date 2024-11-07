@@ -1,0 +1,186 @@
+<html><head><base href="/">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/moon.min.css">
+
+<style>
+.reveal {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.reveal h1, .reveal h2 {
+    color: #2196F3;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.reveal section {
+    text-align: left;
+}
+
+.highlight {
+    color: #FF4081;
+    font-weight: bold;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.process-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.process-list li {
+    margin: 10px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.process-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #2196F3;
+}
+
+.progress-indicator {
+    height: 4px;
+    background: #2196F3;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+    <h1>Escopo de Trabalho</h1>
+    <h3>Período de Férias</h3>
+    <div class="card">
+        <p>Planejamento e Organização para Continuidade do Trabalho</p>
+    </div>
+</section>
+
+<section>
+    <h2>Objetivo</h2>
+    <div class="card">
+        <p>Garantir atendimento e suporte contínuos durante período de férias através de:</p>
+        <ul>
+            <li>Execução de tarefas prioritárias</li>
+            <li>Comunicação eficaz</li>
+            <li>Fluxo de trabalho organizado</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>1. Comunicação de Horário</h2>
+    <div class="card">
+        <p class="highlight">Canais de Comunicação:</p>
+        <ul>
+            <li>WhatsApp</li>
+            <li>Slack</li>
+        </ul>
+        <p>Objetivo: Transparência sobre disponibilidade</p>
+    </div>
+</section>
+
+<section>
+    <h2>2. Correção de Bugs</h2>
+    <div class="card">
+        <div class="process-list">
+            <li>Teste imediato após implementação</li>
+            <li>Comunicação com a equipe</li>
+            <li>Priorização de bugs críticos</li>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>3. Trabalho no Backlog</h2>
+    <div class="card">
+        <p class="highlight">Tarefa Prioritária: ATE-298</p>
+        <ul>
+            <li>Análise de tarefas pendentes</li>
+            <li>Identificação de soluções diretas</li>
+            <li>Avaliação de necessidades de refatoração</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>4. Atualização de Cards</h2>
+    <div class="card">
+        <ul>
+            <li>Documentação de progresso</li>
+            <li>Registro de mudanças</li>
+            <li>Comunicação constante</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Conclusão</h2>
+    <div class="card">
+        <p>Foco em:</p>
+        <ul>
+            <li>Atendimento contínuo</li>
+            <li>Eficiência operacional</li>
+            <li>Organização das atividades</li>
+            <li>Priorização de tarefas críticas</li>
+        </ul>
+    </div>
+</section>
+
+</div>
+</div>
+
+<script>
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    center: true,
+    hash: true,
+    transition: 'slide',
+    // Learn about plugins: https://revealjs.com/plugins/
+});
+
+// Adiciona indicador de progresso personalizado
+const progressBar = document.createElement('div');
+progressBar.className = 'progress-indicator';
+document.body.appendChild(progressBar);
+
+Reveal.on('slidechanged', event => {
+    const currentSlide = event.currentSlide;
+    const totalSlides = document.querySelectorAll('.slides section').length;
+    const progress = (Reveal.getIndices().h + 1) / totalSlides;
+    progressBar.style.width = `${progress * 100}%`;
+});
+
+// Adiciona animações aos elementos quando os slides são mostrados
+Reveal.on('slidechanged', event => {
+    const currentSlide = event.currentSlide;
+    const elements = currentSlide.querySelectorAll('.card, .highlight, li');
+    
+    elements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'all 0.5s ease';
+        
+        setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+});
+</script>
+</body></html>
